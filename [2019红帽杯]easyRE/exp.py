@@ -1,0 +1,21 @@
+print('hint:')
+
+targets = b'Iodl>Qnb(ocy\x7Fy.i\x7Fd`3w}wek9{iy=~yL@EC'
+
+flag = bytearray([(i ^ c) for i, c in enumerate(targets)]).decode()
+
+print(flag)
+
+print('flag:')
+targets = [0x40,0x35,0x20,0x56,0x5D,0x18,0x22,0x45,0x17,0x2F,0x24,0x6E,0x62,0x3C,0x27,0x54,0x48,0x6C,0x24,0x6E,
+     0x72,0x3C,0x32,0x45,0x5B]
+
+key = ''
+keygen = b'flag'
+
+for i in range(4):
+    key += chr(targets[i] ^ keygen[i])
+
+flag = bytearray([targets[i] ^ ord(key[i % 4]) for i in range(25)]).decode()
+
+print(flag)
